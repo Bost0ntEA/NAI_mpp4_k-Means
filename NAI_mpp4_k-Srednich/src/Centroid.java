@@ -21,25 +21,34 @@ class Centroid{
         }
         return Math.sqrt(dis);
     }
-    public void getNewKoordynaty(ArrayList<Irys> irysArray){
+    public boolean getNewKoordynaty(ArrayList<Irys> irysArray){
         ArrayList<Double> noweKoordynaty =new ArrayList<>();
+        for (int i = 0; i < irysArray.get(0).wartosci.size() ; i++) {
+            noweKoordynaty.add(0.0);
+        }
+//        for (int j = 0; j < el.wartosci.size(); j++) noweKoordynaty.add(0.0);
         int count=0;
+//        System.out.println(this.grupa + " printuje grupe");
         for (Irys el : irysArray) {
             if (el.grupa==this.grupa) {
                 for (int i = 0; i < el.wartosci.size(); i++) {
-                    if (noweKoordynaty.isEmpty()){
-                        for (int j = 0; j < el.wartosci.size(); j++) noweKoordynaty.add(0.0);
-                    }else {
                         noweKoordynaty.set(i,noweKoordynaty.get(i)+el.wartosci.get(i));
-                    }
                 }
                 count++;
             }
         }
+//        System.out.println(koordynaty + "stare koordynaty ");
+//        System.out.println(noweKoordynaty + " jare kordy nowe");
         for (int i = 0; i < noweKoordynaty.size(); i++) {
+//            System.out.print(i);
             noweKoordynaty.set(i,noweKoordynaty.get(i) /count);
         }
+//        System.out.println(noweKoordynaty + " nowe kordy polecam ");
+        if (noweKoordynaty.equals(koordynaty)){
+            return false;
+        }
         this.setKoordynaty(noweKoordynaty);
+        return true;
     }
 
     @Override
@@ -56,3 +65,4 @@ class Centroid{
         return odp;
     }
 }
+

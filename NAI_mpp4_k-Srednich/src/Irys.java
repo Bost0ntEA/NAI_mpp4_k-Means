@@ -4,14 +4,16 @@ import java.util.Random;
 public class Irys {
     protected ArrayList<Double> wartosci=new ArrayList<>();
     protected int grupa;
+    protected String kwiatek;
     public Irys(String[] dane,int k){
         for (int i = 0; i < dane.length; i++) {
             try {
                 wartosci.add(Double.valueOf(dane[i]));
             }catch (NumberFormatException e){
-                Random random = new Random();
-                int j = random.nextInt(k)+1;
+//                Random random = new Random();
+                int j =0 /*random.nextInt(k)+1*/;
                 this.grupa=j;
+                this.kwiatek=dane[i];
             }
         }
     }
